@@ -9,6 +9,7 @@ import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+import { MediaCapture } from '@ionic-native/media-capture';
  
 declare var cordova: any;
 
@@ -21,7 +22,7 @@ export class HomePage {
 	lastImage: string = null;
 	loading: Loading;
 	
-  constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage) { }
+  constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage, private MediaCapture: MediaCapture) { }
 	
   pushPage(){
     // push another page on to the navigation stack
@@ -29,8 +30,35 @@ export class HomePage {
     // optional data can also be passed to the pushed page.
     this.navCtrl.push('./pages/list');
   }
+  public startrecording() {
+    this.MediaCapture.captureVideo((videodata) => {});
+  }
+  public presentActionSheet2() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Upload Video Kamu',
+      buttons: [
+        {
+          text: 'Galeri Videdo',
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Rekam Video',
+          handler: () => {
+            this.startrecording();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
   
-  public presentActionSheet() {
+   public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
       buttons: [

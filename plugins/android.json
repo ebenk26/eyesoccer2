@@ -42,6 +42,9 @@
         },
         "cordova-plugin-crop": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "io.ionic.starter"
         }
     },
     "dependent_plugins": {
