@@ -51,12 +51,12 @@ export class HomePage {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Upload Video Kamu',
       buttons: [
-        {
-          text: 'Galeri Video',
-          handler: () => {
-            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-          }
-        },
+        // {
+        //   text: 'Galeri Video',
+        //   handler: () => {
+        //     this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+        //   }
+        // },
         {
           text: 'Rekam Video',
           handler: () => {

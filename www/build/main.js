@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__eyeme_eyeme__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__eyeme_eyeme__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_transfer__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_path__ = __webpack_require__(43);
@@ -164,7 +164,8 @@ var ListPage = (function () {
         fileTransfer.upload(targetPath, url, options).then(function (data) {
             _this.loading.dismissAll();
             // this.presentToast('Image succesful uploaded.');
-            _this.presentToast(JSON.stringify(data));
+            // this.presentToast(JSON.stringify(data));
+            _this.presentToast("Success.");
             // alert(JSON.stringify(data));
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__eyeme_eyeme__["a" /* EyemeListPage */], {
                 filename: "",
@@ -187,98 +188,6 @@ ListPage = __decorate([
 ], ListPage);
 
 //# sourceMappingURL=list.js.map
-
-/***/ }),
-
-/***/ 108:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EyemeListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_transfer__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_file_path__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__home_home__ = __webpack_require__(55);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-var EyemeListPage = (function () {
-    function EyemeListPage(nav, navParams, camera, transfer, file, filePath, actionSheetCtrl, toastCtrl, platform, loadingCtrl, storage, http) {
-        var _this = this;
-        this.nav = nav;
-        this.navParams = navParams;
-        this.camera = camera;
-        this.transfer = transfer;
-        this.file = file;
-        this.filePath = filePath;
-        this.actionSheetCtrl = actionSheetCtrl;
-        this.toastCtrl = toastCtrl;
-        this.platform = platform;
-        this.loadingCtrl = loadingCtrl;
-        this.storage = storage;
-        this.http = http;
-        this.lastImage = null;
-        var filename = navParams.get('filename');
-        var curname = navParams.get('curname');
-        var corpath = navParams.get('corpath');
-        platform.registerBackButtonAction(function () {
-            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_9__home_home__["a" /* HomePage */]);
-        });
-        this.http.get('http://eyesoccer.id/list_eyeme.php').map(function (res) { return res.json(); }).subscribe(function (data) {
-            // this.posts = data.thumbnailUrl;
-            _this.posts = data.data;
-            console.log(data);
-        }, function (err) {
-            console.log("Oops!");
-            console.log(err);
-        });
-    }
-    EyemeListPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.navBar.backButtonClick = function (e) {
-            console.log("Back button clicked");
-            // this.nav.parent.viewCtrl.dismiss();
-            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_9__home_home__["a" /* HomePage */]);
-        };
-    };
-    return EyemeListPage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */])
-], EyemeListPage.prototype, "navBar", void 0);
-EyemeListPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-eyeme',template:/*ion-inline-start:"D:\xampp\htdocs\eyeside3\src\pages\eyeme\eyeme.html"*/'<ion-header>\n\n  <ion-navbar color="primary" style="background: rgba(0, 0, 0, 0) url(\'assets/Eyesoccer_files/h14.png\') no-repeat scroll center center / cover ;transform: none;transform: none;contain: unset;">\n\n    <ion-title>\n\n      Eyeme\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<!--<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let post of posts">\n\n      <ion-img style="width:300px; height:300px" [src]="post.thumb1"></ion-img>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n</ion-content>-->\n\n\n\n<ion-content class="cards-bg">\n\n<ion-list *ngFor="let post of posts">\n\n  <ion-card>\n\n	<ion-card-header>\n\n	<ion-item>\n\n      <ion-avatar item-start>\n\n        <img [src]="post.pic" style="border: 1px solid black;"/>\n\n      </ion-avatar>\n\n      <h2 text-left>{{ post.name }}</h2>\n\n	</ion-item>\n\n	</ion-card-header>\n\n    <img [src]="post.thumb1"/>\n\n\n\n    <ion-card-content>\n\n      <ion-card-title>\n\n        {{ post.title }}\n\n      </ion-card-title>\n\n      <!--<p>\n\n        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.\n\n      </p>-->\n\n    </ion-card-content>\n\n\n\n    <ion-row no-padding>\n\n      <ion-col text-center>\n\n        <button ion-button clear small color="danger" icon-start>\n\n          <ion-icon name=\'heart\'></ion-icon>\n\n          Love\n\n        </button>\n\n      </ion-col>\n\n      <ion-col text-center>\n\n        <button ion-button clear small color="danger" icon-start>\n\n          <ion-icon name=\'chatboxes\'></ion-icon>\n\n          Comment\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n  </ion-card>\n\n  </ion-list>\n\n  </ion-content>\n\n \n\n<ion-footer>\n\n  \n\n</ion-footer>'/*ion-inline-end:"D:\xampp\htdocs\eyeside3\src\pages\eyeme\eyeme.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_file_path__["a" /* FilePath */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
-], EyemeListPage);
-
-//# sourceMappingURL=eyeme.js.map
 
 /***/ }),
 
@@ -324,7 +233,7 @@ webpackEmptyAsyncContext.id = 158;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_video_player__ = __webpack_require__(198);
@@ -333,6 +242,7 @@ webpackEmptyAsyncContext.id = 158;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_file_path__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_camera__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__eyeme_eyeme__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,8 +264,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var videoPlayPage = (function () {
-    function videoPlayPage(nav, navParams, camera, transfer, file, filePath, actionSheetCtrl, toastCtrl, platform, loadingCtrl, storage, http, videoPlayer) {
+    function videoPlayPage(nav, navParams, camera, transfer, file, filePath, actionSheetCtrl, toastCtrl, platform, loadingCtrl, storage, http, videoPlayer, navCtrl) {
         var _this = this;
         this.nav = nav;
         this.navParams = navParams;
@@ -370,6 +281,7 @@ var videoPlayPage = (function () {
         this.storage = storage;
         this.http = http;
         this.videoPlayer = videoPlayer;
+        this.navCtrl = navCtrl;
         this.caption = null;
         this.lastVideo = null;
         this.nameVideo = null;
@@ -428,10 +340,24 @@ var videoPlayPage = (function () {
         fileTransfer.upload(targetPath, url, options).then(function (data) {
             _this.loading.dismissAll();
             console.log(data);
+            _this.presentToast("Success.");
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_11__eyeme_eyeme__["a" /* EyemeListPage */], {
+                filename: "",
+                curname: "",
+                corpath: ""
+            });
         }, function (err) {
             _this.loading.dismissAll();
             console.log(err);
         });
+    };
+    videoPlayPage.prototype.presentToast = function (text) {
+        var toast = this.toastCtrl.create({
+            message: text,
+            duration: 3000,
+            position: 'top'
+        });
+        toast.present();
     };
     return videoPlayPage;
 }());
@@ -443,7 +369,7 @@ videoPlayPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-videoplay',template:/*ion-inline-start:"D:\xampp\htdocs\eyeside3\src\pages\video\video.html"*/'<ion-header>\n\n<ion-navbar color="primary">\n\n    <ion-title>\n\n    Video Playback\n\n    </ion-title>\n\n</ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <button ion-button (click)="playVideo()">Play Video</button>\n\n    <button ion-button (click)="stopPlayingVideo()">Stop playing Video</button>\n\n	<ion-list>\n\n\n\n   <ion-item>\n\n     <ion-label>Caption</ion-label>\n\n     <ion-input type="text" [(ngModel)]="caption"></ion-input>\n\n   </ion-item>\n\n   \n\n   <ion-item>\n\n     <ion-label>Publish</ion-label>\n\n     <ion-checkbox [(ngModel)]="checkboxpub" (ionChange)="updateCheckboxpub()"></ion-checkbox>\n\n   </ion-item>\n\n\n\n </ion-list>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-toolbar color="primary">\n\n    <ion-buttons>\n\n      <button ion-button icon-left (click)="uploadVideo()" [disabled]="lastVideo === null">\n\n        <ion-icon name="cloud-upload"></ion-icon>Upload\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\xampp\htdocs\eyeside3\src\pages\video\video.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_file_path__["a" /* FilePath */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_video_player__["a" /* VideoPlayer */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_file_path__["a" /* FilePath */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_video_player__["a" /* VideoPlayer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
 ], videoPlayPage);
 
 //# sourceMappingURL=video.js.map
@@ -472,13 +398,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_video_player__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_list_list__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_eyeme_eyeme__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_list_list__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_eyeme_eyeme__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_video_video__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_file__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_transfer__ = __webpack_require__(42);
@@ -567,7 +493,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_list_list__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_list_list__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -634,9 +560,9 @@ MyApp = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_list__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_list__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_video__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__eyeme_eyeme__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__eyeme_eyeme__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_transfer__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_file_path__ = __webpack_require__(43);
@@ -704,12 +630,12 @@ var HomePage = (function () {
         var actionSheet = this.actionSheetCtrl.create({
             title: 'Upload Video Kamu',
             buttons: [
-                {
-                    text: 'Galeri Videdo',
-                    handler: function () {
-                        _this.takePicture(_this.camera.PictureSourceType.PHOTOLIBRARY);
-                    }
-                },
+                // {
+                //   text: 'Galeri Video',
+                //   handler: () => {
+                //     this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+                //   }
+                // },
                 {
                     text: 'Rekam Video',
                     handler: function () {
@@ -862,6 +788,98 @@ HomePage = __decorate([
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EyemeListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_transfer__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_file_path__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__home_home__ = __webpack_require__(55);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+var EyemeListPage = (function () {
+    function EyemeListPage(nav, navParams, camera, transfer, file, filePath, actionSheetCtrl, toastCtrl, platform, loadingCtrl, storage, http) {
+        var _this = this;
+        this.nav = nav;
+        this.navParams = navParams;
+        this.camera = camera;
+        this.transfer = transfer;
+        this.file = file;
+        this.filePath = filePath;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.toastCtrl = toastCtrl;
+        this.platform = platform;
+        this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
+        this.http = http;
+        this.lastImage = null;
+        var filename = navParams.get('filename');
+        var curname = navParams.get('curname');
+        var corpath = navParams.get('corpath');
+        platform.registerBackButtonAction(function () {
+            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_9__home_home__["a" /* HomePage */]);
+        });
+        this.http.get('http://eyesoccer.id/list_eyeme.php').map(function (res) { return res.json(); }).subscribe(function (data) {
+            // this.posts = data.thumbnailUrl;
+            _this.posts = data.data;
+            console.log(data);
+        }, function (err) {
+            console.log("Oops!");
+            console.log(err);
+        });
+    }
+    EyemeListPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.navBar.backButtonClick = function (e) {
+            console.log("Back button clicked");
+            // this.nav.parent.viewCtrl.dismiss();
+            _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_9__home_home__["a" /* HomePage */]);
+        };
+    };
+    return EyemeListPage;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */]),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Navbar */])
+], EyemeListPage.prototype, "navBar", void 0);
+EyemeListPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-eyeme',template:/*ion-inline-start:"D:\xampp\htdocs\eyeside3\src\pages\eyeme\eyeme.html"*/'<ion-header>\n\n  <ion-navbar color="primary" style="background: rgba(0, 0, 0, 0) url(\'assets/Eyesoccer_files/h14.png\') no-repeat scroll center center / cover ;transform: none;transform: none;contain: unset;">\n\n    <ion-title>\n\n      Eyeme\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<!--<ion-content padding>\n\n  <ion-list>\n\n    <ion-item *ngFor="let post of posts">\n\n      <ion-img style="width:300px; height:300px" [src]="post.thumb1"></ion-img>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n</ion-content>-->\n\n\n\n<ion-content class="cards-bg">\n\n<ion-list *ngFor="let post of posts">\n\n  <ion-card>\n\n	<ion-card-header style="padding:0">\n\n	<ion-item>\n\n      <ion-avatar item-start>\n\n        <img [src]="post.pic" style="border: 1px solid black;"/>\n\n      </ion-avatar>\n\n      <h2 text-left>{{ post.name }}</h2>\n\n	</ion-item>\n\n	</ion-card-header>\n\n	\n\n	<div *ngIf="post.type_gallery == \'video\'; then thenBlock else elseBlock"></div>\n\n	<ng-template #thenBlock>\n\n		<video controls="controls" class="videoPlayer">\n\n		<source src="{{post.thumb1}}#t=0.1" type="video/mp4" />\n\n		</video>\n\n	</ng-template>\n\n	<ng-template #elseBlock><img [src]="post.thumb1"/></ng-template>\n\n	\n\n    <!--<img [src]="post.thumb1"/>-->\n\n\n\n    <ion-card-content>\n\n      <ion-card-title>\n\n        {{ post.title }}\n\n      </ion-card-title>\n\n      <!--<p>\n\n        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.\n\n      </p>-->\n\n    </ion-card-content>\n\n\n\n    <ion-row no-padding>\n\n      <ion-col text-center>\n\n        <button ion-button clear small color="danger" icon-start>\n\n          <ion-icon name=\'heart\'></ion-icon>\n\n          Love\n\n        </button>\n\n      </ion-col>\n\n      <ion-col text-center>\n\n        <button ion-button clear small color="danger" icon-start>\n\n          <ion-icon name=\'chatboxes\'></ion-icon>\n\n          Comment\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n  </ion-card>\n\n  </ion-list>\n\n  </ion-content>\n\n \n\n<ion-footer>\n\n  \n\n</ion-footer>'/*ion-inline-end:"D:\xampp\htdocs\eyeside3\src\pages\eyeme\eyeme.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_transfer__["a" /* Transfer */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_file_path__["a" /* FilePath */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+], EyemeListPage);
+
+//# sourceMappingURL=eyeme.js.map
 
 /***/ })
 

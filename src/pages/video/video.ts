@@ -12,6 +12,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
 import {HomePage} from '../home/home';
+import {EyemeListPage} from '../eyeme/eyeme';
  
 declare var cordova: any;
 
@@ -30,7 +31,7 @@ videoOpts : VideoOptions ;
   lastImage: string = null;
 	loading: Loading;
 	
-  constructor(public nav:NavController,private navParams: NavParams, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage,public http: Http,private videoPlayer : VideoPlayer) { 
+  constructor(public nav:NavController,private navParams: NavParams, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage,public http: Http,private videoPlayer : VideoPlayer, public navCtrl: NavController) { 
 	// let filepathvideo = this.navParams.get('filepath');
 	console.log(this.navParams.get('filepath'));
 	this.lastVideo = this.navParams.get('filepath');
@@ -93,9 +94,24 @@ videoOpts : VideoOptions ;
 	  fileTransfer.upload(targetPath, url, options).then(data => {
 		this.loading.dismissAll()
 		console.log(data);
+		this.presentToast("Success.");
+		this.navCtrl.push(EyemeListPage, {
+			filename: "",
+			curname: "",
+			corpath: ""
+		});
 	  }, err => {
 		this.loading.dismissAll()
 		console.log(err);
 	  });
+	}
+	
+	private presentToast(text) {
+	  let toast = this.toastCtrl.create({
+		message: text,
+		duration: 3000,
+		position: 'top'
+	  });
+	  toast.present();
 	}
 }

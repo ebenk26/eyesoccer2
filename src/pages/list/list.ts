@@ -154,7 +154,8 @@ export class ListPage {
 	  fileTransfer.upload(targetPath, url, options).then(data => {
 		this.loading.dismissAll()
 		// this.presentToast('Image succesful uploaded.');
-		this.presentToast(JSON.stringify(data));
+		// this.presentToast(JSON.stringify(data));
+		this.presentToast("Success.");
 		// alert(JSON.stringify(data));
 		this.navCtrl.push(EyemeListPage, {
 			filename: "",

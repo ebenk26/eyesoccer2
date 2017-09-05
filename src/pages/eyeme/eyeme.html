@@ -18,7 +18,7 @@
 <ion-content class="cards-bg">
 <ion-list *ngFor="let post of posts">
   <ion-card>
-	<ion-card-header>
+	<ion-card-header style="padding:0">
 	<ion-item>
       <ion-avatar item-start>
         <img [src]="post.pic" style="border: 1px solid black;"/>
@@ -26,7 +26,16 @@
       <h2 text-left>{{ post.name }}</h2>
 	</ion-item>
 	</ion-card-header>
-    <img [src]="post.thumb1"/>
+	
+	<div *ngIf="post.type_gallery == 'video'; then thenBlock else elseBlock"></div>
+	<ng-template #thenBlock>
+		<video controls="controls" class="videoPlayer">
+		<source src="{{post.thumb1}}#t=0.1" type="video/mp4" />
+		</video>
+	</ng-template>
+	<ng-template #elseBlock><img [src]="post.thumb1"/></ng-template>
+	
+    <!--<img [src]="post.thumb1"/>-->
 
     <ion-card-content>
       <ion-card-title>
