@@ -6,21 +6,55 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<!--<ion-content padding>
   <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-img style="width:300px; height:300px" [src]="post.thumb1"></ion-img>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>-->
 
-   <ion-item>
-     <ion-img width="200" height="200" src="assets/Eyesoccer_files/SLIDE-MOBILE-eyetube.png"></ion-img>
-   </ion-item>
-   <ion-item>
-     <ion-img width="200" height="200" src="assets/Eyesoccer_files/drawable-port-xxhdpi-screen.png"></ion-img>
-   </ion-item>
-   <ion-item>
-     <ion-img width="200" height="200" src="assets/Eyesoccer_files/SLIDE-MOBILE-eyeme.png"></ion-img>
-   </ion-item>
+<ion-content class="cards-bg">
+<ion-list *ngFor="let post of posts">
+  <ion-card>
+	<ion-card-header>
+	<ion-item>
+      <ion-avatar item-start>
+        <img [src]="post.pic" style="border: 1px solid black;"/>
+      </ion-avatar>
+      <h2 text-left>{{ post.name }}</h2>
+	</ion-item>
+	</ion-card-header>
+    <img [src]="post.thumb1"/>
 
- </ion-list>
-</ion-content>
+    <ion-card-content>
+      <ion-card-title>
+        {{ post.title }}
+      </ion-card-title>
+      <!--<p>
+        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+      </p>-->
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='heart'></ion-icon>
+          Love
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='chatboxes'></ion-icon>
+          Comment
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+  </ion-list>
+  </ion-content>
  
 <ion-footer>
   

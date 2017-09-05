@@ -1,0 +1,35 @@
+<ion-header>
+<ion-navbar color="primary">
+    <ion-title>
+    Video Playback
+    </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button (click)="playVideo()">Play Video</button>
+    <button ion-button (click)="stopPlayingVideo()">Stop playing Video</button>
+	<ion-list>
+
+   <ion-item>
+     <ion-label>Caption</ion-label>
+     <ion-input type="text" [(ngModel)]="caption"></ion-input>
+   </ion-item>
+   
+   <ion-item>
+     <ion-label>Publish</ion-label>
+     <ion-checkbox [(ngModel)]="checkboxpub" (ionChange)="updateCheckboxpub()"></ion-checkbox>
+   </ion-item>
+
+ </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <button ion-button icon-left (click)="uploadVideo()" [disabled]="lastVideo === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

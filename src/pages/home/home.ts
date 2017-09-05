@@ -3,13 +3,15 @@ import { NavController, ActionSheetController, ToastController, Platform, Loadin
 import { Storage } from '@ionic/storage';
 
 import {ListPage} from '../list/list';
+import {videoPlayPage} from '../video/video';
 import {EyemeListPage} from '../eyeme/eyeme';
 
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
-import { MediaCapture } from '@ionic-native/media-capture';
+// import { MediaCapture } from '@ionic-native/media-capture';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions, CaptureVideoOptions } from '@ionic-native/media-capture';
  
 declare var cordova: any;
 
@@ -23,22 +25,34 @@ export class HomePage {
 	loading: Loading;
 	
   constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage, private MediaCapture: MediaCapture) { }
-	
+
   pushPage(){
     // push another page on to the navigation stack
     // causing the nav controller to transition to the new page
     // optional data can also be passed to the pushed page.
     this.navCtrl.push('./pages/list');
   }
+  public datarecording(data,name) {
+	this.navCtrl.push(videoPlayPage, {
+		filepath: data,
+		filename: name
+	});
+  }
   public startrecording() {
-    this.MediaCapture.captureVideo((videodata) => {});
+    // this.MediaCapture.captureVideo((videodata) => {console.log(videodata)});
+	let options: CaptureVideoOptions = { duration: 15 };
+    this.MediaCapture.captureVideo(options).then(
+		(data: MediaFile[]) => this.datarecording(data[0].fullPath,data[0].name),
+		// (data: MediaFile[]) => console.log(data),
+		(err: CaptureError) => console.error(err)
+	);
   }
   public presentActionSheet2() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Upload Video Kamu',
       buttons: [
         {
-          text: 'Galeri Videdo',
+          text: 'Galeri Video',
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
