@@ -4,13 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { VideoPlayer } from '@ionic-native/video-player';
 
-import { IonicStorageModule } from '@ionic/storage';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MemberAreaPage } from '../pages/member-area/member-area';
 import { ListPage } from '../pages/list/list';
 import { EyemeListPage } from '../pages/eyeme/eyeme';
+import { LoginPage } from '../pages/login/login';
 import { videoPlayPage } from '../pages/video/video';
+import { CommentDetailPage } from '../pages/comment-detail/comment-detail';
 
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
@@ -20,6 +21,7 @@ import { Camera } from '@ionic-native/camera';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MediaCapture } from '@ionic-native/media-capture';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { MediaCapture } from '@ionic-native/media-capture';
     HomePage,
     ListPage,
     videoPlayPage,
-    EyemeListPage
+    EyemeListPage,
+    LoginPage,
+    CommentDetailPage,
+    MemberAreaPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,10 @@ import { MediaCapture } from '@ionic-native/media-capture';
     HomePage,
     ListPage,
     videoPlayPage,
-	EyemeListPage
+	EyemeListPage,
+	LoginPage,
+	CommentDetailPage,
+	MemberAreaPage
   ],
   providers: [
     StatusBar,

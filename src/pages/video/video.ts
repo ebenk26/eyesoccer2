@@ -26,6 +26,7 @@ caption: string = null;
 checkboxpub: boolean;
 lastVideo: string = null;
 nameVideo: string = null;
+iduser: string = null;
 videoOpts : VideoOptions ;
 	posts: any;
   lastImage: string = null;
@@ -80,7 +81,7 @@ videoOpts : VideoOptions ;
 		fileName: filename,
 		chunkedMode: false,
 		mimeType: "video/mp4",
-		params : {'fileName': filename, 'param': this.caption, 'checkbox': this.checkboxpub}
+		params : {'fileName': filename, 'param': this.caption, 'checkbox': this.checkboxpub, 'userid': this.iduser}
 	  };
 	 
 	  const fileTransfer: TransferObject = this.transfer.create();
@@ -113,5 +114,13 @@ videoOpts : VideoOptions ;
 		position: 'top'
 	  });
 	  toast.present();
+	}
+	
+	ionViewDidEnter() {
+		console.log('ionViewDidEnter VideoPage');
+		this.storage.get('id_user').then((val) => {
+			this.iduser = val;
+			console.log(this.iduser);
+		}, error => console.error('Error storing LoginData', error));
 	}
 }

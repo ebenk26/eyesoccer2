@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { ModalController, NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 import {ListPage} from '../list/list';
 import {videoPlayPage} from '../video/video';
 import {EyemeListPage} from '../eyeme/eyeme';
+import {MemberAreaPage} from '../member-area/member-area';
+import { LoginPage } from '../login/login';
 
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 // import { MediaCapture } from '@ionic-native/media-capture';
+import { Storage } from '@ionic/storage';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions, CaptureVideoOptions } from '@ionic-native/media-capture';
  
 declare var cordova: any;
@@ -23,9 +27,24 @@ export class HomePage {
 	aboutPage = EyemeListPage;
 	lastImage: string = null;
 	loading: Loading;
+	username: string = null;
+	usernameview: string = null;
+	useremailview: string = null;
+	useridview: string = null;
+	picview: string = null;
+	password: string = null;
 	
-  constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage, private MediaCapture: MediaCapture) { }
-
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage, private MediaCapture: MediaCapture, public http: Http) {
+	this.storage.get('name_user').then((val) => {
+		this.usernameview = val;
+	}, error => console.error('Error storing LoginData', error));
+	this.storage.get('email_user').then((val) => {
+		this.useremailview = val;
+	}, error => console.error('Error storing LoginData', error));
+	console.log(this.usernameview);
+	console.log(this.useremailview);
+  }
+	
   pushPage(){
     // push another page on to the navigation stack
     // causing the nav controller to transition to the new page
@@ -40,8 +59,12 @@ export class HomePage {
   }
   public startrecording() {
     // this.MediaCapture.captureVideo((videodata) => {console.log(videodata)});
-	let options: CaptureVideoOptions = { duration: 15 };
+	let options: CaptureVideoOptions = { duration: 10 };
     this.MediaCapture.captureVideo(options).then(
+		(data: MediaFile[]) => this.datarecording(data[0].fullPath,data[0].name),
+		(err: CaptureError) => console.error(err)
+	);
+  this.MediaCapture.captureVideo(options).then(
 		(data: MediaFile[]) => this.datarecording(data[0].fullPath,data[0].name),
 		// (data: MediaFile[]) => console.log(data),
 		(err: CaptureError) => console.error(err)
@@ -103,8 +126,11 @@ export class HomePage {
 		quality: 100,
 		sourceType: sourceType,
 		saveToPhotoAlbum: false,
+		width: 300,
+	    height: 300,
 		targetWidth: 300,
 	    targetHeight: 300,
+		allowEdit: true,
 		correctOrientation: true
 	  };
 	 
@@ -209,5 +235,63 @@ export class HomePage {
 		this.loading.dismissAll()
 		this.presentToast('Error while uploading file.');
 	  });
+	}
+	
+	public uploadLogin() {
+		var link = 'http://eyesoccer.id/login_mobile.php';
+        var data = JSON.stringify({username: this.username,password: this.password});
+        
+        this.http.post(link, data).map(res => res.json()).subscribe(
+			data => {
+				console.log(data[0]);
+				this.storage.set('email_user',data[0].email);
+				this.storage.set('id_user',data[0].id_member);
+				this.storage.set('name_user',data[0].fullname);
+				this.storage.set('pic_user',data[0].pic);
+				this.storage.set('title_user',data[0].title);
+				this.storage.set('description_user',data[0].description);
+				this.storage.set('address_user',data[0].address);
+				this.storage.set('klubfav_user',"");
+				this.storage.set('supporter_user',"");
+				this.storage.get('email_user').then((val) => {
+					this.useremailview = val;
+				}, error => console.error('Error storing LoginData', error));
+				this.storage.get('name_user').then((val) => {
+					this.usernameview = val;
+				}, error => console.error('Error storing LoginData', error));
+				this.storage.get('pic_user').then((val) => {
+					this.picview = "http://eyesoccer.id/systems/img_storage/"+val;
+				}, error => console.error('Error storing LoginData', error));
+			},
+			err => {
+				console.log("Oops!");
+				console.log(err);
+			}
+		);
+	}
+	
+	memberPage(){
+	this.navCtrl.push(MemberAreaPage,{
+		username: this.usernameview,
+		email: this.useremailview
+	});
+	}
+	
+	ionViewDidEnter() {
+		console.log('ionViewDidEnter HomePage');
+		this.storage.get('name_user').then((val) => {
+			this.usernameview = val;
+		}, error => console.error('Error storing LoginData', error));
+		this.storage.get('pic_user').then((val) => {
+			this.picview = "http://eyesoccer.id/systems/img_storage/"+val;
+		}, error => console.error('Error storing LoginData', error));
+		this.storage.get('id_user').then((val) => {
+			this.useridview = val;
+		}, error => console.error('Error storing LoginData', error));
+	}
+	
+	presentModal() {
+		let modal = this.modalCtrl.create(LoginPage);
+		modal.present();
 	}
 }

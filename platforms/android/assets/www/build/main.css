@@ -25199,6 +25199,99 @@ ion-navbar.toolbar {
   }
 }
 
+page-comment-detail .divimgEyeme {
+  height: 300px;
+  width: auto;
+  background: green;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+}
+
+page-comment-detail .imgEyeme {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+page-comment-detail .toolbar-background-md {
+  border-color: #b2b2b2;
+  background: transparent url("assets/Eyesoccer_files/h14.png") no-repeat scroll center center/cover;
+  -webkit-transform: none;
+  transform: none;
+  contain: unset;
+}
+
+page-comment-detail .right {
+  float: right;
+  margin-right: 20px;
+}
+
+page-comment-detail .bg-whitesmoke {
+  background-color: whitesmoke;
+}
+
+page-comment-detail .bg-grey {
+  background-color: whitesmoke;
+}
+
+page-comment-detail .color-grey {
+  color: grey;
+}
+
+page-comment-detail .color-blue {
+  color: blue;
+}
+
+page-comment-detail .center {
+  text-align: center;
+}
+
+page-comment-detail .padding-top0 {
+  padding-top: 0px;
+}
+
+page-comment-detail .margin-bot45 {
+  margin-top: 45px;
+}
+
+page-comment-detail .padding-bot0 {
+  padding-bottom: 0px;
+}
+
+page-eyeme .box {
+  height: 100%;
+  width: 450px;
+  border: 2px solid red;
+  background: green;
+  overflow: hidden;
+  text-align: center;
+}
+
+page-eyeme .box img {
+  height: 100%;
+  width: auto;
+  vertical-align: bottom;
+}
+
+page-eyeme .col {
+  padding: 0;
+}
+
+page-eyeme ion-col {
+  text-align: center;
+}
+
 .card-title-md {
   font-size: 1.6rem;
+}
+
+page-login .toolbar-background-md {
+  border-color: #b2b2b2;
+  background: transparent url("assets/Eyesoccer_files/h14.png") no-repeat scroll center center/cover;
+  -webkit-transform: none;
+  transform: none;
+  contain: unset;
 }

@@ -63,6 +63,10 @@
                         {
                             "xml": "<feature name=\"VideoPlayer\"><param name=\"android-package\" value=\"com.moust.cordova.videoplayer.VideoPlayer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NativeStorage\"><param name=\"android-package\" value=\"NativeStorage\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -106,6 +110,11 @@
                         }
                     ]
                 }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": []
+                }
             }
         }
     },
@@ -123,9 +132,6 @@
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-filepath": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-console": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-device": {
@@ -154,6 +160,9 @@
         },
         "com.moust.cordova.videoplayer": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-nativestorage": {
+            "PACKAGE_NAME": "io.ionic.eyesoccer"
         }
     },
     "dependent_plugins": {},
@@ -511,6 +520,24 @@
             "clobbers": [
                 "VideoPlayer"
             ]
+        },
+        {
+            "id": "cordova-plugin-nativestorage.mainHandle",
+            "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
+            "pluginId": "cordova-plugin-nativestorage",
+            "clobbers": [
+                "NativeStorage"
+            ]
+        },
+        {
+            "id": "cordova-plugin-nativestorage.LocalStorageHandle",
+            "file": "plugins/cordova-plugin-nativestorage/www/LocalStorageHandle.js",
+            "pluginId": "cordova-plugin-nativestorage"
+        },
+        {
+            "id": "cordova-plugin-nativestorage.NativeStorageError",
+            "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
+            "pluginId": "cordova-plugin-nativestorage"
         }
     ],
     "plugin_metadata": {
@@ -519,7 +546,6 @@
         "cordova-plugin-file": "4.3.3",
         "cordova-plugin-file-transfer": "1.6.3",
         "cordova-plugin-filepath": "1.0.2",
-        "cordova-plugin-console": "1.0.5",
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-splashscreen": "4.0.3",
         "cordova-plugin-statusbar": "2.2.2",
@@ -528,6 +554,7 @@
         "cordova-sqlite-storage": "2.0.4",
         "cordova-plugin-crop": "0.3.1",
         "cordova-plugin-media-capture": "1.4.3",
-        "com.moust.cordova.videoplayer": "1.0.1"
+        "com.moust.cordova.videoplayer": "1.0.1",
+        "cordova-plugin-nativestorage": "2.2.2"
     }
 }

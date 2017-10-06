@@ -1,0 +1,78 @@
+<!--
+  Generated template for the MemberAreaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary" style="background: rgba(0, 0, 0, 0) url('assets/Eyesoccer_files/h14.png') no-repeat scroll center center / cover ;transform: none;transform: none;contain: unset;">
+    <ion-title>
+      Member Area
+    </ion-title>
+	<a class="clickable" style="color:black;font-weight:bold;position: absolute;bottom: 30%;right: 20px;" [hidden]="usernameview === null">
+		{{usernameview}}
+	</a>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div padding>
+	  <ion-segment [(ngModel)]="pet">
+		<ion-segment-button value="profil">
+		  Profil
+		</ion-segment-button>
+		<ion-segment-button value="gallery">
+		  Gallery
+		</ion-segment-button>
+	  </ion-segment>
+	</div>
+	
+	<div [ngSwitch]="pet">
+	  <ion-list *ngSwitchCase="'profil'">
+		<ion-item>
+		  <ion-label>Nama</ion-label>
+		  <ion-input type="text" [value]="usernameview" [(ngModel)]="usernameview"></ion-input>
+		</ion-item>
+		<ion-item>
+		  <ion-label>Email</ion-label>
+		  <ion-input type="text" [value]="useremailview" disabled="true"></ion-input>
+		</ion-item>
+		<ion-item>
+		  <ion-label>Alamat</ion-label>
+		  <ion-input type="text" [value]="useraddressview" [(ngModel)]="useraddressview"></ion-input>
+		</ion-item>
+		<ion-item>
+		  <ion-label>Klub Favorit</ion-label>
+		  <ion-input type="text" [value]="userklubview" [(ngModel)]="userklubview"></ion-input>
+		</ion-item>
+		<ion-item>
+		  <ion-label>Supporter</ion-label>
+		  <ion-input type="text" [value]="usersupporterview" [(ngModel)]="usersupporterview"></ion-input>
+		</ion-item>
+	<!--<ion-item>
+		  <ion-label>User ID</ion-label>
+		  <ion-input type="text" [value]="usersupporterview" [(ngModel)]="useridview"></ion-input>
+		</ion-item>-->
+		<!--<button class="btn btn-error" (click)="uploadLogout()">
+		Keluar
+		</button>-->
+		<ion-row>
+			<ion-col offset-4>
+				<button ion-button round color="secondary" (click)="uploadUpdate()">Update</button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col offset-4>
+				<button ion-button round color="danger" (click)="uploadLogout()">Keluar</button>
+			</ion-col>
+		</ion-row>
+	  </ion-list>
+
+	  <ion-list *ngSwitchCase="'gallery'">
+	  
+	  </ion-list>
+	</div>
+</ion-content>

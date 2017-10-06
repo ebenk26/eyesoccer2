@@ -39,14 +39,6 @@
         "is_top_level": false,
         "variables": {}
     },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-console@1.0.5"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
@@ -115,6 +107,14 @@
         "source": {
             "type": "registry",
             "id": "https://github.com/moust/cordova-plugin-videoplayer"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-nativestorage": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-nativestorage"
         },
         "is_top_level": true,
         "variables": {}

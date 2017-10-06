@@ -352,7 +352,20 @@
 <div class="col-xs-6 col-sm-6 text-right"><a href="https://eyesoccer.id/index"><img src="assets/Eyesoccer_files/m1.png" class="img img-responsive" id="img2"></a></div>
 	
 <!--<div class="col-xs-6 col-sm-6 pull-right"><a data-toggle="modal" data-target="#mlogin" class="btn btn-warning btn-sm btn-block clickable">MASUK</a></div>-->
-<div class="col-xs-6 col-sm-6 pull-right" style="line-height: 38px;text-align: right;"><a data-toggle="modal" data-target="#mlogin" class="clickable" style="color:white;font-weight:bold">DAFTAR</a></div>
+<div class="col-xs-6 col-sm-6 pull-right" style="line-height: 38px;text-align: right;">
+<!--<a data-toggle="modal" data-target="#mlogin" class="clickable" style="color:white;font-weight:bold" [hidden]="usernameview !== null">DAFTAR</a>-->
+<a (click)="presentModal()" class="clickable" style="color:white;font-weight:bold;position: absolute;bottom: 0%;right: 20px;" [hidden]="usernameview !== null">
+		DAFTAR
+</a>
+<a (click)="memberPage()" class="clickable" style="color:black;font-weight:bold;position: absolute;top: 0;right: 10px;" [hidden]="usernameview === null">
+<!--<ion-item style="background-color: transparent;">
+<ion-avatar item-start>
+	<img [src]="picview" style="border: 1px solid black;"/>
+</ion-avatar>-->
+{{usernameview}}
+<!--</ion-item>-->
+</a>
+</div>
 	</div>
 </div>
 </div>
@@ -408,12 +421,11 @@
 </div>
 
 
-<div id="mlogin" class="modal fade" role="dialog">
+<div id="mlogin" class="modal fade" role="dialog" [hidden]="usernameview !== null">
 <div class="modal-dialog">
     <div class="modal-content" width="80%">
     <div class="modal-header text-center"><h1 id="t3">MASUK</h1></div>
       <div class="modal-body">
-  <img src="{{pathForImage(lastImage)}}" id="lastImageView" style="width: 100%" [hidden]="lastImage === null">
     <ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#tab-login" id="a4">Masuk</a></li>
 		<li class=""><a data-toggle="tab" href="#tab-daftar" id="a4">Daftar</a></li>
@@ -423,9 +435,11 @@
 		<br>
 		
 		 <form method="post">
-      <div class="form-group" id="t1"><input name="username" class="form-control" id="ipt1" placeholder="Username" required="" type="text"></div>
-      <div class="form-group" id="t1"><input name="password" class="form-control" id="ipt1" placeholder="Password" required="" type="password"></div>
-      <div class="form-group" id="t1"><input name="login" value=" LOGIN " class="btn btn-warning col-lg-5" type="submit"><br></div>
+      <div class="form-group" id="t1"><input name="username" class="form-control" id="ipt1" placeholder="Username" required="" type="text" [(ngModel)]="username"></div>
+      <div class="form-group" id="t1"><input name="password" class="form-control" id="ipt1" placeholder="Password" required="" type="password" [(ngModel)]="password"></div>
+      <div class="form-group" id="t1">
+	  <button name="login" class="btn btn-warning col-lg-5" (click)="uploadLogin()" type="button">Login</button>
+	  <br></div>
      
       </form>
   		</div>
@@ -1100,16 +1114,16 @@
 <div class="container-fluid mobile-view" style="">
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 171px;"><ul class="bxslider" style="width: 4215%; position: relative; transition-duration: 0s; transform: translate3d(-1216px, 0px, 0px);"><a href="https://eyesoccer.id/eyemarket" style="float: left; list-style: outside none none; position: relative; width: 304px;" class="bx-clone" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyemarket.png" title="Eyemarket"></li><div class="bx-caption"><span>Eyemarket</span></div></a>
+			<div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 171px;"><ul class="bxslider" style="width: 4215%; position: relative; transition-duration: 0s; transform: translate3d(-1216px, 0px, 0px);"><a style="float: left; list-style: outside none none; position: relative; width: 304px;" class="bx-clone" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyemarket.png" title="Eyemarket"></li><div class="bx-caption"><span>Eyemarket</span></div></a>
 				<a [navPush]="aboutPage" style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyeme.png" title="Eyeme"></li><div class="bx-caption"><span>Eyeme</span></div></a>
-				<a href="https://eyesoccer.id/eyenews" style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyenews.png" title="Eyenews"></li><div class="bx-caption"><span>Eyenews</span></div></a>
-				<a href="https://eyesoccer.id/eyetube" style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyetube.png" title="Eyetube"></li><div class="bx-caption"><span>Eyetube</span></div></a>
-				<a href="https://eyesoccer.id/eyemarket" style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="false"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyemarket.png" title="Eyemarket"></li><div class="bx-caption"><span>Eyemarket</span></div></a>
+				<a style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyenews.png" title="Eyenews"></li><div class="bx-caption"><span>Eyenews</span></div></a>
+				<a style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyetube.png" title="Eyetube"></li><div class="bx-caption"><span>Eyetube</span></div></a>
+				<a style="float: left; list-style: outside none none; position: relative; width: 304px;" aria-hidden="false"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyemarket.png" title="Eyemarket"></li><div class="bx-caption"><span>Eyemarket</span></div></a>
 			<a [navPush]="aboutPage" style="float: left; list-style: outside none none; position: relative; width: 304px;" class="bx-clone" aria-hidden="true"><li><img src="assets/Eyesoccer_files/SLIDE-MOBILE-eyeme.png" title="Eyeme"></li><div class="bx-caption"><span>Eyeme</span></div></a></ul></div><div class="bx-controls bx-has-controls-direction bx-has-pager"><div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next" href="">Next</a></div><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link active">4</a></div></div></div></div>
 		</div>
 	</div>
 	
-	<a href="https://eyesoccer.id/eyeprofile">
+	<a>
 	<div class="mobile-img-right bg-green">
 		<div class="">
 			<!--<i class="fa fa-users"></i>-->
@@ -1126,7 +1140,7 @@
 			<!--<i class="fa fa-newspaper-o"></i>-->
 			<img class="img-mobile-menutopleft" src="assets/Eyesoccer_files/icon-eyenews.png">
 		</div>
-		<a class="mobile-content-hover" href="https://eyesoccer.id/eyenews"><div class="title-desc-mobile"><div class="text-margin">Monaco Siap Lepas Mbappe ke PSG</div></div></a>	</div>
+		<a class="mobile-content-hover"><div class="title-desc-mobile"><div class="text-margin">Monaco Siap Lepas Mbappe ke PSG</div></div></a>	</div>
 
 	<div class="mobile-img-leftlong">
 		<a [navPush]="aboutPage">
@@ -1142,7 +1156,7 @@
 						 New Post<br>3			</div>
 		</div>
 		</a>
-		<a href="https://eyesoccer.id/eyemarket">
+		<a>
 		<div class="img-leftlong-bottom bg-blue">
 			<div class="title-img-mobilecenter">
 				<!--<i class="fa fa-shopping-cart"></i>-->
@@ -1159,39 +1173,7 @@
 			<!--<i class="fa fa-play-circle-o"></i>-->
 			<img class="img-mobile-menu" src="assets/Eyesoccer_files/icon-eyetube.png">
 		</div>
-		<a class="mobile-content-hover" href="https://eyesoccer.id/eyetube"><div class="title-desc-mobile"><div class="text-margin">Eyesoccer Flash : Kalahkan Hoffenheim di Babak Playoff, Liverpool Lolos Ke Fase Grup Liga Champions</div></div></a>	</div>
-	<!--
-	<div class="mobile-img-rightlong bg-pink">
-		<div class="title-img-mobilecenter">
-			<i class="fa fa-money"></i>
-		</div>
-		<div class="title-img-mobilebtm">
-			EyeWallet
-		</div>
-	</div>
-	
-	<div class="mobile-img-leftlong">
-		<div class="img-leftlong-top bg-purple">
-			<div class="title-img-mobilecenter">
-				<i class="fa fa-ticket"></i>
-			</div>
-			<div class="title-img-mobilebtm">
-				EyeTicket
-			</div>
-		</div>
-		
-		<a href='eyeme'>
-		<div class="img-leftlong-bottom bg-yellow">
-			<div class="title-img-mobilecenter">
-				<i class="fa fa-camera"></i>
-			</div>
-			<div class="title-img-mobilebtm">
-				EyeMe
-			</div>
-		</div>
-		</a>
-	</div>
-	-->
+		<a class="mobile-content-hover"><div class="title-desc-mobile"><div class="text-margin">Eyesoccer Flash : Kalahkan Hoffenheim di Babak Playoff, Liverpool Lolos Ke Fase Grup Liga Champions</div></div></a>	</div>
 	
 	<div class="mobile-img-leftlong" style="width: 100%;height:170px">
 		<div class="img-leftlong-bottom" style="height:170px;">
@@ -1200,7 +1182,7 @@
 				<!--i class="fa fa-calendar"></i>-->
 				<img class="img-mobile-menu" src="assets/Eyesoccer_files/icon-eyevent.png">
 			</div>
-			<a class="mobile-content-hover" href="https://eyesoccer.id/eyevent"><div class="title-desc-mobile" style="width: 100%;"><div class="text-margin">Pekan 22 Liga 1 Gojek Traveloka</div></div></a>		</div>
+			<a class="mobile-content-hover"><div class="title-desc-mobile" style="width: 100%;"><div class="text-margin">Pekan 22 Liga 1 Gojek Traveloka</div></div></a>		</div>
 	</div>
 </div>
 <!-- update rizki end --><!-- update rizki -->
@@ -1210,14 +1192,30 @@
 <input id="totaltube" value="4" type="hidden">
 
 <!-- update rizki start-->
-<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;left: 12px;padding: 5px;" (click)="presentActionSheet()">
+<!--<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;left: 12px;padding: 5px;" (click)="presentActionSheet()">
 <img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera1600.png">
+</nav>-->
+
+<a class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;left: 12px;padding: 5px;" (click)="presentModal()" [hidden]="usernameview !== null">
+	<img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera1600.png">
+</a>
+<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;left: 12px;padding: 5px;" (click)="presentActionSheet()" [hidden]="usernameview === null">
+	<img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera1600.png">
 </nav>
-<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;right: 12px;padding: 5px;" (click)="presentActionSheet2()">
+
+<!--<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;right: 12px;padding: 5px;" (click)="presentActionSheet2()">
 
        <img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera-512.png">
 
+</nav>-->
+
+<a class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;right: 12px;padding: 5px;" (click)="presentModal()" [hidden]="usernameview !== null">
+	<img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera-512.png">
+</a>
+<nav class="c-circle-menu" style="background-color: whitesmoke;border: 1px solid black;right: 12px;padding: 5px;" (click)="presentActionSheet2()" [hidden]="usernameview === null">
+	<img style="width: 48px;left: 12px;" src="assets/Eyesoccer_files/camera-512.png">
 </nav>
+
 <nav class="c-circle-menu js-menu" style="right: 44%;">
 <img style="width: 48px;" src="assets/Eyesoccer_files/imageedit_6_8277776047.png" class="c-circle-menu__toggle2 js-menu-toggle">
   <button class="c-circle-menu__toggle js-menu-toggle" style="display:none">
@@ -1230,17 +1228,17 @@
       </a>
     </li>
     <li class="c-circle-menu__item" style="transform:translate(-113px, -10px)">
-      <a href="https://eyesoccer.id/index" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/tab_icon.png" alt="" style="max-width: 100%;">
       </a>
     </li>
     <li class="c-circle-menu__item" style="transform: translate(-72px, -61px);">
-      <a href="https://eyesoccer.id/eyenews" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/icon-eyenews.png" alt="">
       </a>
     </li>
     <li class="c-circle-menu__item" style="transform: translate(-17px, -112px);">
-      <a href="https://eyesoccer.id/eyevent" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/icon-eyevent.png" alt="">
       </a>
     </li>
@@ -1262,17 +1260,17 @@
       </a>
     </li>
     <li class="c-circle-menu__item circle-menu2-3" style="transform: translate(-95px, -95px);">
-      <a href="https://eyesoccer.id/eyemarket" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/icon-eyemarket.png" alt="">
       </a>
     </li>
     <li class="c-circle-menu__item circle-menu2-4" style="transform: translate(-44px, -156px);">
-      <a href="https://eyesoccer.id/eyetube" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/icon-eyetube.png" alt="">
       </a>
     </li>
     <li class="c-circle-menu__item circle-menu2-5" style="transform: translate(24px, -195px);">
-      <a href="https://eyesoccer.id/eyeprofile" class="c-circle-menu__link">
+      <a class="c-circle-menu__link">
         <img src="assets/Eyesoccer_files/icon-eyeprofile-putih.png" alt="">
       </a>
     </li>
@@ -1389,7 +1387,7 @@ body { padding-bottom: 70px; }
 </nav>-->
 
 <div class="col-lg-12 col-xs-12" style="background-color:#A6A6A6;border-color:#2ED1A2;position:relative;bottom:0px;left:0px;display:block;width:100%">
-<h5 style="color:white;line-height:200%"> eyesoccer.id 2016 | <a href="https://eyesoccer.id/tentang-kami" style="text-decoration:none;color:white">Tentang Kami</a></h5></div> 
+<h5 style="color:white;line-height:200%"> eyesoccer.id 2016 | <a style="text-decoration:none;color:white">Tentang Kami</a></h5></div> 
 <style>
 #back1{
 	-webkit-border-bottom-right-radius: 20px;

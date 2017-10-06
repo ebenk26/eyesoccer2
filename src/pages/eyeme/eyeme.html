@@ -3,6 +3,12 @@
     <ion-title>
       Eyeme
     </ion-title>
+	<a (click)="memberPage()" class="clickable" style="color:black;font-weight:bold;position: absolute;bottom: 30%;right: 20px;" [hidden]="usernameview === null">
+		{{usernameview}}
+	</a>
+	<a (click)="presentModal()" class="clickable" style="color:white;font-weight:bold;position: absolute;bottom: 30%;right: 20px;" [hidden]="usernameview !== null">
+		DAFTAR
+	</a>
   </ion-navbar>
 </ion-header>
 
@@ -29,11 +35,19 @@
 	
 	<div *ngIf="post.type_gallery == 'video'; then thenBlock else elseBlock"></div>
 	<ng-template #thenBlock>
-		<video controls="controls" class="videoPlayer">
+		<video controls="controls" class="videoPlayer" style="max-height:300px;">
 		<source src="{{post.thumb1}}#t=0.1" type="video/mp4" />
 		</video>
 	</ng-template>
-	<ng-template #elseBlock><img [src]="post.thumb1"/></ng-template>
+	<ng-template #elseBlock><div style="height: 300px;
+    width: auto;
+    background: green;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;"><img [src]="post.thumb1" style="width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;"/></div></ng-template>
 	
     <!--<img [src]="post.thumb1"/>-->
 
@@ -46,20 +60,32 @@
       </p>-->
     </ion-card-content>
 
-    <ion-row no-padding>
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='heart'></ion-icon>
-          Love
-        </button>
-      </ion-col>
-      <ion-col text-center>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='chatboxes'></ion-icon>
-          Comment
-        </button>
-      </ion-col>
-    </ion-row>
+	<ion-row class="card-content-md">
+		<ion-col>
+		  <button ion-button color="primary" clear small icon-start [hidden]="usernameview === null" (click)="love(useremailview,post.id,post)" >
+			<ion-icon name='star'></ion-icon>
+			{{post.like}} Likes
+		  </button>
+		  <button ion-button color="primary" clear small icon-start [hidden]="usernameview !== null">
+			<ion-icon name='star'></ion-icon>
+			{{post.like}} Likes
+		  </button>
+		</ion-col>
+		<ion-col>
+		  <button ion-button color="primary" clear small icon-start (click)="presentModalComment(post.pic,post.name,post.type_gallery,post.thumb1,post.title,post.id)">
+			<ion-icon name='text'></ion-icon>
+			{{post.comment}} Comments
+		  </button>
+		</ion-col>
+		<ion-col>
+		  <!--<ion-note>
+			11h ago
+		  </ion-note>-->
+		  <button ion-button color="primary" clear small icon-start>
+			<ion-icon name='share'></ion-icon>
+		  </button>
+		</ion-col>
+	</ion-row>
 
   </ion-card>
   </ion-list>

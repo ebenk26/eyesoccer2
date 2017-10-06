@@ -1,5 +1,24 @@
 page-eyeme {
-
+	.box {
+		height: 100%;
+		width: 450px;
+		border: 2px solid red;
+		background: green;
+		overflow: hidden;
+		text-align: center;
+	}
+	
+	.box img {
+		height: 100%;
+		width: auto;
+		vertical-align: bottom;
+	}
+	.col {
+		padding: 0;
+	}
+	ion-col{
+		text-align:center;
+	}
 }
 .card-title-md {
     font-size: 1.6rem;

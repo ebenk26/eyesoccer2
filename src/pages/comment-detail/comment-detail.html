@@ -1,0 +1,111 @@
+
+<ion-header>
+  <ion-toolbar style="background: rgba(0, 0, 0, 0) url('assets/Eyesoccer_files/h14.png') no-repeat scroll center center / cover ;transform: none;contain: unset;">
+    <ion-title>
+      
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="cards-bg">
+	<ion-list>
+		<ion-card>
+			<ion-card-header style="padding:0">
+			<ion-item>
+			  <ion-avatar item-start>
+				<img [src]="avapic" style="border: 1px solid black;"/>
+			  </ion-avatar>
+			  <h2 text-left>{{ name }}</h2>
+			</ion-item>
+			</ion-card-header>
+
+			<div *ngIf="type_gallery == 'video'; then thenBlock else elseBlock"></div>
+			<ng-template #thenBlock>
+				<video controls="controls" class="videoPlayer" style="max-height:300px;">
+				<source src="{{pic}}#t=0.1" type="video/mp4" />
+				</video>
+			</ng-template>
+			<ng-template #elseBlock><div class="divimgEyeme">
+				<img [src]="pic" class="imgEyeme"/></div>
+			</ng-template>
+
+			<!--<img [src]="post.thumb1"/>-->
+
+			<ion-card-content>
+			  <ion-card-title>
+				{{ title }}
+			  </ion-card-title>
+			  <!--<p>
+				The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+			  </p>-->
+			</ion-card-content>
+			
+			<ion-item [hidden]="usernameview === null">
+				<ion-textarea placeholder="Tulis Komentar" [(ngModel)]="commenttext"></ion-textarea>
+			</ion-item>
+			
+			<button ion-button small round color="primary" class="right" [hidden]="usernameview === null" (click)="comment()">Kirim</button>
+			<div class="margin-bot45">
+				<ion-list class="bg-grey" *ngFor="let post of posts">
+					<ion-item class="bg-whitesmoke">
+						<ion-avatar item-start>
+							<img [src]="post.pic" class="ava-comment-img"/>
+						</ion-avatar>
+						<h2 text-left>{{ post.name }}</h2>
+					</ion-item>
+					<ion-card-content class="padding-bot0">
+						{{post.pesan}}
+					</ion-card-content>
+					<ion-row class="card-content-md padding-top0">
+						<ion-col class="center">
+						  <ion-note class="color-blue center">
+							Reply
+						  </ion-note>
+						</ion-col>
+						<ion-col class="center">
+						  <ion-note class="color-grey">
+							{{post.tanggal}}
+						  </ion-note>
+						</ion-col>
+					</ion-row>
+					<ion-row class="card-content-md" style="margin-left: 10px;margin-right: 10px;padding-top: 0;">
+						<ion-list class="bg-grey list-sub-reply">
+							<ion-item class="bg-whitesmoke">
+								<ion-avatar item-start>
+									<img src="http://eyesoccer.id/systems/img_storage/profile-1135-spin_app_logo.png" class="ava-comment-img"/>
+								</ion-avatar>
+								<h2 text-left>nano</h2>
+							</ion-item>
+							<ion-card-content class="padding-bot0">
+								isi reply
+							</ion-card-content>
+							<ion-row class="card-content-md padding-top0 padding-bot0">
+								<ion-col class="center">
+								  <ion-note class="color-blue center">
+									Reply
+								  </ion-note>
+								</ion-col>
+								<ion-col class="center">
+								  <ion-note class="color-grey">
+									2017
+								  </ion-note>
+								</ion-col>
+							</ion-row>
+						</ion-list>
+						<ion-item [hidden]="usernameview === null">
+							<ion-textarea placeholder="Tulis Komentar" [(ngModel)]="commenttext"></ion-textarea>
+						</ion-item>
+						<button ion-button small round color="primary" class="right" [hidden]="usernameview === null" (click)="comment()">Kirim</button>
+					</ion-row>
+				</ion-list>
+			</div>
+		</ion-card>
+	</ion-list>
+</ion-content>

@@ -1,0 +1,56 @@
+page-comment-detail {
+	.divimgEyeme{
+		height: 300px;
+		width: auto;
+		background: green;
+		overflow: hidden;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.imgEyeme{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		overflow: hidden;
+	}
+	.toolbar-background-md {
+		border-color: #b2b2b2;
+		background: rgba(0, 0, 0, 0) url('assets/Eyesoccer_files/h14.png') no-repeat scroll center center / cover ;
+		transform: none;
+		contain: unset;
+	}
+	.right{
+		float: right;
+		margin-right: 20px;
+	}
+	.bg-whitesmoke{
+		background-color: whitesmoke;
+	}
+	.bg-grey{
+		background-color: whitesmoke;
+	}
+	.color-grey{
+		color: grey;
+	}
+	.color-blue{
+		color: blue;
+	}
+	.center{
+		text-align: center;
+	}
+	.padding-top0{
+		padding-top: 0px;
+	}
+	.margin-bot45{
+		margin-top: 45px;
+	}
+	.padding-bot0{
+		padding-bottom: 0px;
+	}
+	.list-sub-reply{
+		border-left: 1px dotted lightslategrey;
+	}
+	.ava-comment-img{
+		border: 1px solid black;
+	}
+}

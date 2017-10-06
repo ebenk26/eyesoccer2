@@ -353,6 +353,24 @@ module.exports = [
         "clobbers": [
             "VideoPlayer"
         ]
+    },
+    {
+        "id": "cordova-plugin-nativestorage.mainHandle",
+        "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
+        "pluginId": "cordova-plugin-nativestorage",
+        "clobbers": [
+            "NativeStorage"
+        ]
+    },
+    {
+        "id": "cordova-plugin-nativestorage.LocalStorageHandle",
+        "file": "plugins/cordova-plugin-nativestorage/www/LocalStorageHandle.js",
+        "pluginId": "cordova-plugin-nativestorage"
+    },
+    {
+        "id": "cordova-plugin-nativestorage.NativeStorageError",
+        "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
+        "pluginId": "cordova-plugin-nativestorage"
     }
 ];
 module.exports.metadata = 
@@ -363,7 +381,6 @@ module.exports.metadata =
     "cordova-plugin-file": "4.3.3",
     "cordova-plugin-file-transfer": "1.6.3",
     "cordova-plugin-filepath": "1.0.2",
-    "cordova-plugin-console": "1.0.5",
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-splashscreen": "4.0.3",
     "cordova-plugin-statusbar": "2.2.2",
@@ -372,7 +389,8 @@ module.exports.metadata =
     "cordova-sqlite-storage": "2.0.4",
     "cordova-plugin-crop": "0.3.1",
     "cordova-plugin-media-capture": "1.4.3",
-    "com.moust.cordova.videoplayer": "1.0.1"
+    "com.moust.cordova.videoplayer": "1.0.1",
+    "cordova-plugin-nativestorage": "2.2.2"
 };
 // BOTTOM OF METADATA
 });

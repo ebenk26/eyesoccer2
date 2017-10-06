@@ -20,6 +20,7 @@ export class ListPage {
   lastImage: string = null;
 	loading: Loading;
 	caption: string = null;
+	iduser: string = null;
 	checkboxpub: boolean;
 	
   constructor(private navParams: NavParams, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, private storage: Storage, public navCtrl: NavController) { 
@@ -134,13 +135,12 @@ export class ListPage {
 	 
 	  // File name only
 	  var filename = this.lastImage;
-	 
 	  var options = {
 		fileKey: "file",
 		fileName: filename,
 		chunkedMode: false,
 		mimeType: "multipart/form-data",
-		params : {'fileName': filename, 'param': this.caption, 'checkbox': this.checkboxpub}
+		params : {'fileName': filename, 'param': this.caption, 'checkbox': this.checkboxpub, 'userid': this.iduser}
 	  };
 	 
 	  const fileTransfer: TransferObject = this.transfer.create();
@@ -167,5 +167,13 @@ export class ListPage {
 		this.presentToast('Error while uploading file.');
 		// alert(JSON.stringify(err));
 	  });
+	}
+	
+	ionViewDidEnter() {
+		console.log('ionViewDidEnter ListPage');
+		this.storage.get('id_user').then((val) => {
+			this.iduser = val;
+			console.log(this.iduser);
+		}, error => console.error('Error storing LoginData', error));
 	}
 }

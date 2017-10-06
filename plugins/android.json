@@ -19,9 +19,6 @@
         "cordova-plugin-filepath": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
@@ -48,6 +45,9 @@
         },
         "com.moust.cordova.videoplayer": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-nativestorage": {
+            "PACKAGE_NAME": "io.ionic.eyesoccer"
         }
     },
     "dependent_plugins": {
